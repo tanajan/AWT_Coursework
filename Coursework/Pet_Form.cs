@@ -3,13 +3,15 @@ using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace Coursework
 {
     public partial class Pet_Form : UserControl
-    {
-        static MongoClient client = new MongoClient("mongodb+srv://admini:12345@myfirstcluster.wpxqjhw.mongodb.net/?retryWrites=true&w=majority");
+    { /* Place connection string here in the connection */
+        static string connection = "";
+        static MongoClient client = new MongoClient(connection);
         static IMongoDatabase db = client.GetDatabase("lab14");
         static IMongoCollection<Pet> Petcollection = db.GetCollection<Pet>("pet");
         public Pet_Form()
